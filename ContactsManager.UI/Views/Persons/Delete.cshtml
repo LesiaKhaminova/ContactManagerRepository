@@ -1,0 +1,75 @@
+﻿@model PersonResponse
+@{
+    ViewBag.Title = "Delete Person";
+    ViewBag.CurrentUrl = "~/Persons/Delete";
+}
+<div class="flex">
+    <div class="flex-1">
+        <span class="text-grey">Contacts</span>
+        <i class="fa-solid fa-caret-right"></i>
+        <span class="text-grey">Persons</span>
+        <i class="fa-solid fa-caret-right"></i>
+        <span class="text-grey">Delete</span>
+    </div>
+</div>
+
+<div class="form-container">
+    <a asp-action="Index" asp-controller="Persons" class="link-hover">Back to Persons List</a>
+    <h1 class="text-large">Delete Person</h1>
+    <form asp-action="Delete" method="post" asp-controller="Persons">
+        <input type="hidden" asp-for="PersonId"/>
+        @*PersonName*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="FirstName" class="form-label pt">Person Name</label>
+            </div>
+            <div class="flex-1">
+                <input type="text" asp-for="FirstName" class="form-input" disabled ="disabled"/>
+                <span asp-validation-for="FirstName" class="text-red"></span>
+            </div>
+        </div>
+        @*PersonLastName*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="LastName" class="form-label pt">Person Last Name</label>
+            </div>
+            <div class="flex-1">
+                <input type="text" asp-for="LastName" class="form-input" disabled="disabled" />
+                <span asp-validation-for="LastName" class="text-red"></span>
+            </div>
+        </div>
+        @*Email*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Email" class="form-label pt">Email</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Email" class="form-input" disabled ="disabled"/>
+                <span asp-validation-for="Email" class="text-red"></span>
+            </div>
+        </div>
+        @*SubmitButton*@
+        <div class="form-field flex">
+            <div class="w-25">
+            </div>
+            <div class="flex-1">
+                <button class="button button-red-back">Delete</button>
+                <div class="text-red" asp-validation-summary="All"></div>
+            </div>
+        </div>
+        @if(ViewBag.Errors != null)
+        {
+            <div class="text-red" ml>
+                <ul>
+                @foreach(string error in ViewBag.Errors)
+                {
+                    <li class="ml">@error</li>
+                }
+                </ul>
+            </div>
+        }
+
+    </form>
+</div>
+
+
