@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PersonResponse>
+@{
+    Layout = null;
+}
+<link href="@("http://" + Context.Request.Host.ToString() + "StyleSheet.css")" rel="stylesheet"/>
+    <table class="table w-100 mt">
+        <thead>
+            <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Date Of Birth</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Country Name</th>
+            <th>Adress</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (PersonResponse person in Model)
+            {
+                <tr>
+                    <td class="w-15">@person.FirstName</td>
+                    <td class="w-15">@person.LastName</td>
+                    <td class="w-15">@person.Email</td>
+                    <td class="w-15">@person.DateOfBirth?.ToString("dd MMM yyyy")</td>
+                    <td class="w-15">@person.Age</td>
+                    <td class="w-15">@person.Gender</td>
+                    <td class="w-15">@person.CountryName</td>
+                    <td class="w-15">@person.Adress</td>
+                    <td class="w-15">@person.ReceiveNewsLetters</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
